@@ -39,3 +39,11 @@ Content-Type: application/json
   "active": 3000,
   "deaths": 104
 }
+
+
+###
+GET http://localhost:3000/states/3/stats/
+
+
+###
+GET http://localhost:3000/districts/6/details/
