@@ -119,4 +119,27 @@ app.put("/districts/:districtId/", async (request, response) => {
   response.send("District Details Updated");
 });
 
-//
+//GETTING TOTAL STATS
+app.get("/states/:stateId/stats/", async (request, response) => {
+  const { stateId } = request.params;
+  const getStats = `
+    SELECT SUM(cases) as totalCases,
+    SUM(cured) as totalCured,
+    SUM(active) as  totalActive,
+    SUM(deaths) as totalDeaths FROM district where state_id=${stateId};`;
+  const result = await db.get(getStats);
+  // console.log(result);
+  response.send(result);
+});
+
+//GET STATE WITH DISTRICT API
+app.get("/districts/:districtId/details/", async (request, response) => {
+  const { districtId } = request.params;
+  const getStateName = `
+    SELECT  state.state_name as stateName  FROM district INNER JOIN state ON state.state_id = district.state_id WHERE district_id=${districtId};
+    `;
+  const stateDetails = await db.get(getStateName);
+  // console.log(stateDetails);
+  response.send(stateDetails);
+});
+module.exports = app;
