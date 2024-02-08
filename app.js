@@ -5,7 +5,7 @@ app.use(express.json());
 const { open } = require("sqlite");
 const sqlite3 = require("sqlite3");
 const dbPath = path.join(__dirname, "covid19India.db");
-
+let db=null;
 // Initializing Server and Database
 const initializeDbAndServer = async () => {
   try {
