@@ -29,6 +29,11 @@ const convertDbObjectToResponseObject = (dbObject) => {
     stateId: dbObject.state_id,
     stateName: dbObject.state_name,
     population: dbObject.population,
+    districtName:dbObject.district_name,
+    cases:dbObject.cases,
+    deaths:dbobject.deaths,
+    cured:dbobject.cured,
+    active:dbObject.active,
   };
 };
 
